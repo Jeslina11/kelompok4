@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login & Register</title>
+
+    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+</head>
+<body>
+
+<!--------------------- NAVBAR SECTION --------------------->  
+<header>
+    <a href="#" class="logo">
+      <img src="image/logo.png" alt="Logo" />
+  </a>
+      <ul class="navbar">
+        <li><a href="halaman.html" id="home">Beranda</a></li>
+        <li><a href="#holiday" id="about">Tentang</a></li>
+        <li><a href="informasi umum.html" id="informasi">Informasi umum</a></li>
+        <li><a href="wisata.html" id="about">Wisata</a></li>
+        <li class="login"><a href="#" id="loginButton">Masuk</a></li>
+    </ul>
+</header>
+
+
+  <!---------------------- BACKGROUND VIDEO --------------------->
+  <div class="hero">
+    <video autoplay muted id="myVideo">
+      <source src="3.mp4" type="video/mp4">
+    </video>
+
+
+    <!--------------------- LOGIN SECTION --------------------->
+    <div class="container">
+        <div class="main-box login">
+            <h1>Masuk</h1>
+            <form action="">
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-envelope"></i></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                    <input type="password" required>
+                    <label>Kata sandi</label>
+                </div>
+                <div class="check">
+                    <label><input type="checkbox">Ingatkan saya!</label>
+                    <a href="#">Lupa kata sandi?</a>
+                </div>
+                <button type="submit" class="main-btn">Masuk</button>
+                <div class="register">
+                    <p>Tidak memiliki akun?<a href="#" class="register-link"> Daftar</a></p>
+                </div>
+            </form>
+        </div>
+
+    <!--------------------- REGISTRASI SECTION --------------------->
+    <div class="main-box register">
+        <h1>Daftar</h1>
+        <form action="">
+            <div class="input-box">
+                <span class="icon"><i class="bx bxs-user"></i></span>
+                <input type="text" required>
+                <label>Nama pengguna</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="bx bxs-envelope"></i></span>
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                <input type="password" required>
+                <label>Kata sandi</label>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                <!-- <input type="verification password" required> -->
+                <input type="password" required>
+                <label>Konfirmasi Kata sandi</label>
+            </div>
+            <div class="check">
+                <label><input type="checkbox">Saya menerima semua syarat & ketentuan</label>
+            </div>
+            <button type="submit" class="main-btn">Daftar</button>
+            <div class="register">
+                <p>Sudah punya akun?<a href="#" class="login-link"> Masuk</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <!---------------------- JAVA SCRIPT ------------------>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.querySelector('.container');
+        const loginLink = document.querySelector('.login-link');
+        const registerLink = document.querySelector('.register-link');
+        const btnPopup = document.querySelector('.btnLogin-popup');
+        const closeIcon = document.querySelector('.close-icon');
+
+        registerLink.addEventListener('click', () => {
+            container.classList.add('active');
+        });
+
+        loginLink.addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+
+        btnPopup.addEventListener('click', () => {
+            container.classList.add('active-popup');
+        });
+
+        closeIcon.addEventListener('click', () => {
+            container.classList.remove('active-popup');
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fungsi untuk mengarahkan ke halaman yang diinginkan
+        function redirectTo(halaman) {
+            window.location.href = halaman;
+        }
+
+        // Event listener untuk tombol login
+        document.querySelector('.main-box.login button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+            redirectTo('halaman.html');
+        });
+
+        // Event listener untuk tombol register
+        document.querySelector('.main-box.register button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+            redirectTo('halaman.html');
+        });
+    });
+</script> 
+<script>
+    document.getElementById('loginButton').onclick = function() {
+      document.getElementById('loginModal').style.display = "block";
+      document.getElementById('LoginForm').classList.add('active');
+      document.getElementById('RegisterForm').classList.remove('active');
+    };
+  
+    document.getElementById('closeModal').onclick = function() {
+      document.getElementById('loginModal').style.display = "none";
+    };
+  
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('loginModal')) {
+        document.getElementById('loginModal').style.display = "none";
+      }
+    };
+  
+    document.querySelector('.register-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('LoginForm').classList.remove('active');
+      document.getElementById('RegisterForm').classList.add('active');
+    });
+  
+    document.querySelector('.login-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('RegisterForm').classList.remove('active');
+      document.getElementById('LoginForm').classList.add('active');
+    });
+  
+    function redirectToProfile() {
+    // window.location.href = 'halaman.html';
+//   window.location.href = 'halaman profile.html';
+    }
+  </script>   
+</body>
+</html>
