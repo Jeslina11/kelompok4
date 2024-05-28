@@ -1,19 +1,8 @@
-<?php
-
-session_start();
-require 'config.php';
-
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    header('Location: home.php');
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="login-style.css">
+    <title>Register</title>
+    <link rel="stylesheet" href="regis-style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
 </head>
@@ -38,12 +27,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </video>
 
     <div class="container">
-        <div class="main-box login">
-            <h1>Masuk</h1>
-            <form action="autentikasi.php" method="post">
+        <div class="main-box register">
+            <h1>Daftar</h1>
+            <form action="proses_register.php" method="post">
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-user"></i></span>
+                    <input type="text" name="username" required>
+                    <label>Nama pengguna</label>
+                </div>
                 <div class="input-box">
                     <span class="icon"><i class="bx bxs-envelope"></i></span>
-                    <input type="email" name="username" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
@@ -51,13 +45,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <input type="password" name="password" required>
                     <label>Kata sandi</label>
                 </div>
-                <div class="check">
-                    <label><input type="checkbox">Ingatkan saya!</label>
-                    <a href="#">Lupa kata sandi?</a>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+                    <input type="password" required>
+                    <label>Konfirmasi Kata sandi</label>
                 </div>
-                <button type="submit" class="main-btn">Masuk</button>
+                <div class="check">
+                    <label><input type="checkbox">Saya menerima semua syarat & ketentuan</label>
+                </div>
+                <button type="submit" class="main-btn">Daftar</button>
                 <div class="register">
-                    <p>Tidak memiliki akun?<a href="register.php" class="register-link"> Daftar</a></p>
+                    <p>Sudah punya akun?<a href="login.php" class="login-link"> Masuk</a></p>
                 </div>
             </form>
         </div>
